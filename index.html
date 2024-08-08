@@ -1,66 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Apache ECharts Gauge Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <title>Plotly Gauge Chart</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <div id="gaugeChart" style="width: 400px; height: 400px;"></div>
     <script>
-        var chartDom = document.getElementById('gaugeChart');
-        var myChart = echarts.init(chartDom);
-        var option;
+        var data = [{
+            type: "indicator",
+            mode: "gauge+number",
+            value: 76,
+            gauge: {
+                axis: { range: [0, 100] },
+                steps: [
+                    { range: [0, 45], color: "red" },
+                    { range: [46, 75], color: "yellow" },
+                    { range: [76, 100], color: "green" }
+                ],
+            }
+        }];
 
-        option = {
-            series: [{
-                type: 'gauge',
-                progress: {
-                    show: true,
-                    width: 18
-                },
-                axisLine: {
-                    lineStyle: {
-                        width: 18
-                    }
-                },
-                axisTick: {
-                    show: false
-                },
-                splitLine: {
-                    length: 15,
-                    lineStyle: {
-                        width: 2,
-                        color: '#999'
-                    }
-                },
-                axisLabel: {
-                    distance: 25,
-                    color: '#999',
-                    fontSize: 20
-                },
-                anchor: {
-                    show: true,
-                    showAbove: true,
-                    size: 25,
-                    itemStyle: {
-                        color: '#1e90ff'
-                    }
-                },
-                title: {
-                    show: false
-                },
-                detail: {
-                    valueAnimation: true,
-                    formatter: '{value} %',
-                    color: 'auto'
-                },
-                data: [{
-                    value: 76
-                }]
-            }]
-        };
-
-        option && myChart.setOption(option);
+        var layout = { width: 400, height: 400 };
+        Plotly.newPlot('gaugeChart', data, layout);
     </script>
 </body>
 </html>
