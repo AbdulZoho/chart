@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apache ECharts Gauge Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="gaugeChart" style="width: 400px; height: 400px;"></div>
+    <script>
+        var chartDom = document.getElementById('gaugeChart');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            series: [{
+                type: 'gauge',
+                progress: {
+                    show: true,
+                    width: 18
+                },
+                axisLine: {
+                    lineStyle: {
+                        width: 18
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                splitLine: {
+                    length: 15,
+                    lineStyle: {
+                        width: 2,
+                        color: '#999'
+                    }
+                },
+                axisLabel: {
+                    distance: 25,
+                    color: '#999',
+                    fontSize: 20
+                },
+                anchor: {
+                    show: true,
+                    showAbove: true,
+                    size: 25,
+                    itemStyle: {
+                        color: '#1e90ff'
+                    }
+                },
+                title: {
+                    show: false
+                },
+                detail: {
+                    valueAnimation: true,
+                    formatter: '{value} %',
+                    color: 'auto'
+                },
+                data: [{
+                    value: 76
+                }]
+            }]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+</body>
+</html>
